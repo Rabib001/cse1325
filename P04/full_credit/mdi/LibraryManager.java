@@ -30,7 +30,7 @@ public class LibraryManager
 		System.out.println(library);
 		
 		Scanner scanner = new Scanner(System.in);
-		System.out.print("Which book to check out? ");
+		System.out.print("Which publication to check out? ");
 		int publicationIndex= scanner.nextInt();
 		
 		scanner.nextLine();
