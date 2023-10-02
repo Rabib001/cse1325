@@ -19,23 +19,6 @@ public class LibraryManager
 	public void listPublications()
 	{
 		System.out.println("List of Publications and Videos:");
-		Library library= new Library("Husain's Library");
-		
-		library.addPublication(new Publication("The Call of the Wild","Jack London", 1903));
-		library.addPublication(new Publication("To Kill a Mockingbird","Harper Lee", 1960));
-		library.addPublication(new Publication("One Hundred Years of Sloitude","Gabriel Garcia Marquez", 1967));
-		
-		try
-		{
-		library.addPublication(new Video("The Shawshank Redemption", "Frank Darabont", 1994, 142));
-		library.addPublication(new Video("Pulp Fiction", "Quentin Tarantino", 1994, 154));
-		library.addPublication(new Video("Inception", "Christopher Nolan", 2010, 148));
-		}
-		catch(InvalidRuntimeException e)
-		{
-			System.out.println("Invalid runtime exception: "+e.getMessage());
-		}
-		
 		System.out.println(library);
 	}
 
@@ -51,6 +34,8 @@ public class LibraryManager
 			scanner.nextLine();
 			library.addPublication(new Publication(title, author, copyright));
 			System.out.println("Publication added successfully");
+
+			System.out.println(library);
 	}	
 
 	public void addVideo()
@@ -75,20 +60,14 @@ public class LibraryManager
 		{
             System.out.println("Invalid runtime exception: " + e.getMessage());
         }
+
+		System.out.println(library);
 	}
 
 	public void checkOutPublication()
 	{
-		//System.out.println(library);
-		listPublications();
+		System.out.println(library);
 
-		/*
-		int selection = Integer.parseInt(System.console().readLine("\nWhich publication to check out? "));
-        String patron = System.console().readLine("Who are you? ");
-        library.checkOut(selection, patron);
-		*/
-
-		
 		Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the index of the publication to check out: ");
         int publicationIndex = scanner.nextInt();
@@ -97,7 +76,6 @@ public class LibraryManager
 		
         System.out.print("Enter the name of the patron: ");
         String patronName = scanner.nextLine();
-
 	
         try 
 		{
@@ -109,15 +87,12 @@ public class LibraryManager
             System.out.println("Invalid publication index. Enter a valid index.");
         }
 
-		
-
-		//System.out.println(library);
-		//listPublications();
-		//scanner.close();
+		System.out.println(library);
 	}
 
 	public void checkInPublication()
 	{
+		System.out.println(library);
 		Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the index of the publication to check in: ");
         int publicationIndex = scanner.nextInt();
@@ -131,14 +106,15 @@ public class LibraryManager
 		{
             System.out.println("Invalid publication index. Enter a valid index.");
         }
+
+		System.out.println(library);
 	}
 
 	public static void main(String[] args)
-	{
-
-		/*
-		Library library= new Library("Husain's Library");
-		
+	{		
+		Library library = new Library("Husain's Library");	
+        LibraryManager manager = new LibraryManager(library);
+        
 		library.addPublication(new Publication("The Call of the Wild","Jack London", 1903));
 		library.addPublication(new Publication("To Kill a Mockingbird","Harper Lee", 1960));
 		library.addPublication(new Publication("One Hundred Years of Sloitude","Gabriel Garcia Marquez", 1967));
@@ -153,40 +129,11 @@ public class LibraryManager
 		{
 			System.out.println("Invalid runtime exception: "+e.getMessage());
 		}
-		
-		System.out.println(library);
-		
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Which book to check out? ");
-		int publicationIndex= scanner.nextInt();
-		
-		scanner.nextLine();
-		System.out.print("Who are you? ");
-		String patronName=scanner.nextLine();
-		
-		try
-		{
-			library.checkOut(publicationIndex, patronName);
-			System.out.println("Book checked out successfully.");
-		}
-		catch(IndexOutOfBoundsException e)
-		{
-			System.out.println("Invalid publication index. Enter valid index");
-		}
-		
-		System.out.println("Husain's Library");
-		System.out.println(library);
-		
-		scanner.close();
 
-		*/
-
-		Library library = new Library("Husain's Library");
-        LibraryManager manager = new LibraryManager(library);
-        
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
+        while (true) 
+		{
             System.out.println("Library Management System Menu:");
             System.out.println("1. List all Publications and Videos");
             System.out.println("2. Add a new Publication");
@@ -199,7 +146,8 @@ public class LibraryManager
             int choice = scanner.nextInt();
             scanner.nextLine(); 
 
-            switch (choice) {
+            switch (choice) 
+			{
                 case 1:
                     manager.listPublications();
                     break;
