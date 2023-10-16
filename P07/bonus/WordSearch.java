@@ -169,3 +169,4 @@ public class WordSearch {
     private final Object counterLock = new Object();
     private int sharedCounter = 0;  
 }
+
