@@ -1,4 +1,5 @@
 #include "Index.h"
+#include "Location.h"
 
 Index::Index(){}
 
